@@ -1,5 +1,5 @@
 {
-  "name": "command-schedule",
+  "name": "bot-schedule",
   "version": "1.0.0",
   "dependencies": {
     "chalk": "^2.3.0",
