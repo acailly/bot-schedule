@@ -1,0 +1,10 @@
+{
+  "name": "command-schedule",
+  "version": "1.0.0",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "cross-env": "5.0.5",
+    "jsonfile": "^4.0.0",
+    "later": "^1.2.0"
+  }
+}
