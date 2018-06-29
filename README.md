@@ -10,9 +10,13 @@ schedule:
     - pattern: "once every minute"
       command: "proxy"
     - pattern: "once every hour"
+      command: "bitcoin"
+    - pattern: "startup"
       command: "say hello"
 ```
 
 ## Which pattern can I use?
 
-This command uses `later` lib. Docs about pattern can be found here: http://bunkat.github.io/later/.
+This command uses the text and cron parsers of the `later` lib (http://bunkat.github.io/later/parsers.html).
+
+You can also use `startup` pattern to run a command at startup.

@@ -12,11 +12,14 @@ const startJobs = vorpal => {
 };
 
 const startJob = ({ command, pattern }, vorpal) => {
+  const isStartPattern = pattern === "startup";
   const isPatternText = later.parse.text(pattern).error === -1;
 
   let sched;
   let humanSched;
-  if (isPatternText) {
+  if (isStartPattern) {
+    humanSched = "at startup";
+  } else if (isPatternText) {
     sched = later.parse.text(pattern);
     humanSched = pattern;
   } else {
@@ -38,7 +41,12 @@ const startJob = ({ command, pattern }, vorpal) => {
   vorpal.log(
     chalk.yellow(`[SCHEDULED] Executing command '${command}' ${humanSched}`)
   );
-  later.setInterval(jobFunction, sched);
+
+  if (isStartPattern) {
+    jobFunction();
+  } else {
+    later.setInterval(jobFunction, sched);
+  }
 };
 
 module.exports = function(vorpal) {
